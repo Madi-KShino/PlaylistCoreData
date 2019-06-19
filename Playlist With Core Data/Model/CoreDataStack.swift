@@ -11,11 +11,10 @@ import CoreData
 
 enum CoreDataStack {
     
-    //Creating a container based off the app name if one does not aready exist, and pulls data from that container
     static let container: NSPersistentContainer = {
         
         let appName = Bundle.main.object(forInfoDictionaryKey: (kCFBundleNameKey as String)) as! String
-        let container = NSPersistentContainer(name: appName)
+        let container = NSPersistentContainer(name: "Playlist_With_Core_Data")
         container.loadPersistentStores() { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

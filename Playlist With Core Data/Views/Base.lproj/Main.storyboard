@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BKF-HW-Doj">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,16 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textField key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Playlist Name..." textAlignment="natural" minimumFontSize="17" id="YQ7-pm-8i0">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="9sn-fj-Exy">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Playlist Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQ7-pm-8i0">
+                                    <rect key="frame" x="5" y="5" width="404" height="35"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="YQ7-pm-8i0" firstAttribute="top" secondItem="9sn-fj-Exy" secondAttribute="top" constant="5" id="5NC-9J-iFd"/>
+                                <constraint firstAttribute="bottom" secondItem="YQ7-pm-8i0" secondAttribute="bottom" constant="5" id="fUO-Y9-iGS"/>
+                                <constraint firstAttribute="trailing" secondItem="YQ7-pm-8i0" secondAttribute="trailing" constant="5" id="fn4-pc-sr5"/>
+                                <constraint firstItem="YQ7-pm-8i0" firstAttribute="leading" secondItem="9sn-fj-Exy" secondAttribute="leading" constant="5" id="jbi-Ng-eMO"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playlistCell" textLabel="OCD-i4-3wH" detailTextLabel="FWQ-ZC-VDs" style="IBUITableViewCellStyleValue1" id="VJC-yA-gsc">
-                                <rect key="frame" x="0.0" y="58" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="73" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VJC-yA-gsc" id="lEl-bU-djR">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -82,20 +94,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Knh-Pn-JRm">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nib-W3-dPX">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="5" y="5" width="404" height="70"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rTI-L7-PS8">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="22"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="35"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEG-wy-eiB">
-                                            <rect key="frame" x="0.0" y="22" width="414" height="22"/>
+                                            <rect key="frame" x="0.0" y="35" width="404" height="35"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -103,17 +115,17 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="nib-W3-dPX" secondAttribute="bottom" id="OOb-A0-qtR"/>
-                                <constraint firstItem="nib-W3-dPX" firstAttribute="top" secondItem="Knh-Pn-JRm" secondAttribute="top" id="Uyt-9X-VhO"/>
-                                <constraint firstItem="nib-W3-dPX" firstAttribute="leading" secondItem="Knh-Pn-JRm" secondAttribute="leading" id="Z2I-97-98A"/>
-                                <constraint firstAttribute="trailing" secondItem="nib-W3-dPX" secondAttribute="trailing" id="msK-3S-pAW"/>
+                                <constraint firstAttribute="bottom" secondItem="nib-W3-dPX" secondAttribute="bottom" constant="5" id="B5R-qi-Xnh"/>
+                                <constraint firstAttribute="trailing" secondItem="nib-W3-dPX" secondAttribute="trailing" constant="5" id="OP8-8v-U2T"/>
+                                <constraint firstItem="nib-W3-dPX" firstAttribute="leading" secondItem="Knh-Pn-JRm" secondAttribute="leading" constant="5" id="XnZ-aO-j7g"/>
+                                <constraint firstItem="nib-W3-dPX" firstAttribute="top" secondItem="Knh-Pn-JRm" secondAttribute="top" constant="5" id="xDq-ce-FB3"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" textLabel="nF3-bF-Fxb" detailTextLabel="ppo-FI-3Tu" style="IBUITableViewCellStyleSubtitle" id="qnU-mX-me7">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qnU-mX-me7" id="Sha-8S-KyW">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>

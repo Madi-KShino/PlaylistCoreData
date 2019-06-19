@@ -10,16 +10,29 @@ import UIKit
 
 class PlaylistListTableViewController: UITableViewController {
 
-    
+    //OUTLETS
     @IBOutlet weak var playlistNameTextField: UITextField!
     
+    //VIEW DID LOAD & WILL APPEAR
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    @IBAction func addPlaylistButtonTapped(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
+    //ACTIONS
+    @IBAction func addPlaylistButtonTapped(_ sender: Any) {
+        guard let name = playlistNameTextField.text, name != ""
+            else { return }
+        
+        PlaylistController.sharedInstance.createPlaylistWith(name: name)
+        
+        playlistNameTextField.text = ""
+        tableView.reloadData()
+    }
     
     //TABLE VIEW DATA
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,26 +59,13 @@ class PlaylistListTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
+
     //SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        guard let index = tableView.indexPathForSelectedRow,
+        let destinationVC = segue.destination as? SongListTableViewController
+            else { return }
+        let playlistToSend = PlaylistController.sharedInstance.playlists[index.row]
+        destinationVC.playlistLandingPad = playlistToSend
     }
 }
-
-

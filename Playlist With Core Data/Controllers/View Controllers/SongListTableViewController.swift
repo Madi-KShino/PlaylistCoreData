@@ -34,6 +34,7 @@ class SongListTableViewController: UITableViewController {
         
         songNameTextField.text = ""
         artistNameTextField.text = ""
+        tableView.reloadData()
     }
     
     //TABLE VIEW DATA

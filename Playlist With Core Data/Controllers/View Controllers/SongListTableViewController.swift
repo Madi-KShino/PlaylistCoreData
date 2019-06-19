@@ -10,40 +10,57 @@ import UIKit
 
 class SongListTableViewController: UITableViewController {
 
+    //LANDING PAD FOR DATA
+    var playlistLandingPad: Playlist?
     
+    //OUTLETS
     @IBOutlet weak var songNameTextField: UITextField!
     @IBOutlet weak var artistNameTextField: UITextField!
     
-    
+    //VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = playlistLandingPad?.name
     }
 
+    //ACTIONS
     @IBAction func addSongButtonTapped(_ sender: Any) {
+        guard let title = songNameTextField.text, title != "",
+        let artist = artistNameTextField.text, artist != ""
+            else { return }
+        
+        guard let playlist = playlistLandingPad else { return }
+        SongController.sharedInstance.createNewSongWith(title: title, artist: artist, playlist: playlist)
+        
+        songNameTextField.text = ""
+        artistNameTextField.text = ""
     }
     
-    // MARK: - Table view data source
-
+    //TABLE VIEW DATA
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return playlistLandingPad?.songs?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
 
+        guard let song = playlistLandingPad?.songs?[indexPath.row] as? Song
+            else { return UITableViewCell() }
+        cell.textLabel?.text = song.title
+        cell.detailTextLabel?.text = song.artist
 
         return cell
     }
 
-    
-    // Override to support editing the table view.
+    //DELETE CELL
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            
+            guard let song = playlistLandingPad?.songs?[indexPath.row] as? Song
+                else { return }
+            SongController.sharedInstance.deleteSong(songToDelete: song)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
- 
 }

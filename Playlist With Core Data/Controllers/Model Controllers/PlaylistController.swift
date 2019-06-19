@@ -15,7 +15,11 @@ class PlaylistController {
     static let sharedInstance = PlaylistController()
     
     //SOURCE OF TRUTH
-    var playlists: [Playlist] = []
+    var playlists: [Playlist]  {
+        let request: NSFetchRequest<Playlist> = Playlist.fetchRequest()
+        return (try? CoreDataStack.managedObjectContext.fetch(request))
+        ?? []
+    }
     
     //CRUD FUNCTIONS
     func createPlaylistWith(name: String) {

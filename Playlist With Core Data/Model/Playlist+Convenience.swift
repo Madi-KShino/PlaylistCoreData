@@ -10,10 +10,9 @@ import Foundation
 import CoreData
 
 extension Playlist {
-    //playlist attributes have already been declared, but still need to be initialized
+    @discardableResult 
     convenience init(name: String,
                      context: NSManagedObjectContext = CoreDataStack.managedObjectContext) {
-        //convenience initilizers must also have a self.init called
         self.init(context: context)
         self.name = name
     }
